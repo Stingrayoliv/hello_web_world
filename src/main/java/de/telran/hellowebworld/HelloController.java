@@ -34,4 +34,21 @@ public class HelloController {
         incomingData.name = "Hello, " + incomingData.name;
         return incomingData;
     }
+
+    @PutMapping("/hello-json")
+    @ResponseBody
+    public JsonName helloJsonText2(@RequestBody JsonName incomingData) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String first = String.valueOf(incomingData.name.charAt(0)).toUpperCase();
+        incomingData.name = stringBuilder.replace(0, 1, first).append(incomingData.name.substring(1)).toString();
+        return incomingData;
+    }
+
+
+    @DeleteMapping("/hello-json")
+    @ResponseBody
+    public JsonName helloJsonText3(@RequestBody JsonName incomingData) {
+        incomingData.name = incomingData.name + " was deleted";
+        return incomingData;
+    }
 }
